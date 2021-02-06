@@ -69,7 +69,6 @@ defmodule Smlr.MixProject do
       {:plug, ">= 1.6.0"},
       {:cachex, "~> 3.0"},
       {:brotli, "~> 0.2.1"},
-      {:zstd, "~> 0.2.0"},
       {:telemetry, "~> 0.4.1"}
     ]
   end

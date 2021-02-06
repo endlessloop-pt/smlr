@@ -6,8 +6,7 @@ defmodule Smlr.Config do
     compressors: [
       Smlr.Compressor.Gzip,
       Smlr.Compressor.Deflate,
-      Smlr.Compressor.Brotli,
-      Smlr.Compressor.Zstd
+      Smlr.Compressor.Brotli
     ],
     all_types: true,
     types: [

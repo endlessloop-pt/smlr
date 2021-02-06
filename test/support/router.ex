@@ -16,7 +16,7 @@ defmodule SmlrTest.Router do
 
     plug(Smlr,
       ignore_client_weight: true,
-      compressors: [Smlr.Compressor.Gzip, Smlr.Compressor.Deflate, Smlr.Compressor.Brotli, Smlr.Compressor.Zstd]
+      compressors: [Smlr.Compressor.Gzip, Smlr.Compressor.Deflate, Smlr.Compressor.Brotli]
     )
   end
 

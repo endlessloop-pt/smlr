@@ -11,7 +11,7 @@
 <!-- end_header -->
 Smlr is a plug for phoenix to compress output to the client, and optionally cache it.
 
-It currently supports Gzip, deflate, br, and Zstd algorithms. The backend is pluggable
+It currently supports Gzip, deflate, br algorithms. The backend is pluggable
 making it easy for you to add your own compressors.
 
 Local caching of the compressed output is available via cachex, you are able to limit
