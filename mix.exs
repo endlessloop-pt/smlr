@@ -68,7 +68,7 @@ defmodule Smlr.MixProject do
       {:mock, "~> 0.3.0", only: :test},
       {:plug, ">= 1.6.0"},
       {:cachex, "~> 3.0"},
-      {:brotli, "~> 0.2.1"},
+      {:brotli, "~> 0.3.1"},
       {:telemetry, "~> 0.4.1"}
     ]
   end
