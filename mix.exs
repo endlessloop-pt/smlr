@@ -68,7 +68,7 @@ defmodule Smlr.MixProject do
       {:mock, "~> 0.3.0", only: :test},
       {:plug, ">= 1.6.0"},
       {:cachex, "~> 3.0"},
-      {:brotli, "~> 0.3.1"},
+      {:brotli, git: "https://github.com/yjh0502/erl-brotli", ref: "48e707f"},
       {:telemetry, "~> 0.4.1"}
     ]
   end
