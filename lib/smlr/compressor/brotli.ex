@@ -18,6 +18,9 @@ defmodule Smlr.Compressor.Brotli do
   end
 
   def compress(data, opts) do
-    :brotli.encode(data, %{quality: level(opts)})
+    case :brotli.encode(data, %{quality: level(opts)}) do
+      {:ok, iodata} -> iodata
+      error -> error
+    end
   end
 end
