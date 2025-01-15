@@ -10,14 +10,11 @@ defmodule Smlr.Application do
 
     cachex =
       case Map.fetch(cache_opts, :limit) do
-        {:ok, nil} ->
-          {Cachex, [Smlr.DefaultCache, []]}
-
-        {:ok, limit} ->
-          {Cachex, [Smlr.DefaultCache, [limit: limit, reclaim: 0.1]]}
+        {:ok, limit} when not is_nil(limit) ->
+          Supervisor.child_spec({Cachex, [limit: limit, reclaim: 0.1]}, id: Smlr.DefaultCache)
 
         _ ->
-          {Cachex, [Smlr.DefaultCache, []]}
+          Supervisor.child_spec({Cachex, []}, id: Smlr.DefaultCache)
       end
 
     children = [
