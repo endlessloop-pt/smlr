@@ -11,13 +11,10 @@ defmodule Smlr.Application do
     cachex =
       case Map.fetch(cache_opts, :limit) do
         {:ok, limit} when not is_nil(limit) ->
-          worker(Cachex, [Smlr.DefaultCache, []])
+          worker(Cachex, [Smlr.DefaultCache, [limit: limit, reclaim: 0.1]])
 
         _ ->
-          %{
-            id: Smlr.DefaultCache,
-            start: {Cachex, :start_link, [[]]}
-          }
+          worker(Cachex, [Smlr.DefaultCache, []])
       end
 
     children = [
