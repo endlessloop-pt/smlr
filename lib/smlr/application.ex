@@ -14,7 +14,10 @@ defmodule Smlr.Application do
           worker(Cachex, [Smlr.DefaultCache, [limit: limit, reclaim: 0.1]])
 
         _ ->
-          worker(Cachex, [Smlr.DefaultCache, []])
+          %{
+            id: Smlr.DefaultCache,
+            start: {Cachex, :start_link, [[]]}
+          }
       end
 
     children = [
