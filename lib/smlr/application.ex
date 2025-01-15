@@ -11,19 +11,15 @@ defmodule Smlr.Application do
     cachex =
       case Map.fetch(cache_opts, :limit) do
         {:ok, limit} when not is_nil(limit) ->
-          worker(Cachex, [Smlr.DefaultCache, [limit: limit, reclaim: 0.1]])
+          {Cachex, {Cachex, :start_link, [Smlr.DefaultCache, [limit: limit, reclaim: 0.1]]}, :permanent, 5000, :worker, [Cachex]}
 
         _ ->
-          %{
-            id: Smlr.DefaultCache,
-            start: {Cachex, :start_link, [[]]}
-          }
+          {Cachex, {Cachex, :start_link, [Smlr.DefaultCache, []]}, :permanent, 5000, :worker, [Cachex]}
       end
 
     children = [
       cachex
     ]
-    |> IO.inspect()
 
     opts = [strategy: :one_for_one, name: Smlr.Supervisor]
     Supervisor.start_link(children, opts)
