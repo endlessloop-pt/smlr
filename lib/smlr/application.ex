@@ -20,6 +20,7 @@ defmodule Smlr.Application do
     children = [
       cachex
     ]
+    |> IO.inspect()
 
     opts = [strategy: :one_for_one, name: Smlr.Supervisor]
     Supervisor.start_link(children, opts)
